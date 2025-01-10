@@ -61,10 +61,10 @@ class AppFixtures extends Fixture
             $manager->persist($article);
             $articles[] = $article;
         }
-        
+
         //10 commentaires / articles
         foreach ($articles as $art) {
-            for ($i=0; $i < 3; $i++) { 
+            for ($i=0; $i < 10; $i++) { 
                 $commentary = new Commentary();
                 $commentary
                     ->setContent($faker->realText(200))
