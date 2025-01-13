@@ -1,10 +1,12 @@
-{% extends 'base.html.twig' %} {% block title %}Article{% endblock %} 
+{% extends 'base.html.twig' %} 
+
+{% block title %}Article{% endblock %} 
 
 {% block body %}
 <!-- Blog Article -->
 <div class="max-w-3xl px-4 pt-6 lg:pt-10 pb-12 sm:px-6 lg:px-8 mx-auto">
 	<div class="max-w-2xl">
-		<!-- Content -->
+		<!-- article -->
 		<div class="space-y-5 md:space-y-8">
 			<div class="space-y-3">
 				<h2 class="text-2xl font-bold md:text-3xl dark:text-white">
@@ -49,10 +51,9 @@
 			</div>
 			<!-- End Categories -->
 		</div>
-		<!-- End Content -->
-		
+		<!-- End article -->
 		<!-- Commentary -->
-		<ul class="space-y-10">
+		<ul class="space-y-10 mt-6">
 			{% for commentary in article.commentaries %}
 			<li>
 				<p class="mt-1 text-sm text-gray-500 dark:text-neutral-500">
@@ -72,7 +73,6 @@
 			{% endfor %}
 		</ul>
 		<!-- End Commentary -->
-		
 	</div>
 </div>
 <!-- End Blog Article -->
