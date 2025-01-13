@@ -13,7 +13,7 @@ class ArticleController extends AbstractController
         private readonly ArticleRepository $repo
     ) {}
 
-    #[Route('/articles', name: 'app_article')]
+    #[Route('/articles', name: 'app_articles')]
     public function showAll(): Response
     {
         return $this->render('article/articles.html.twig', [
