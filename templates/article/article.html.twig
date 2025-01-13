@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Article{% endblock %}
+
+{% block body %}
+    {% if article.id is defined %}
+        {{ article.title }}
+    {% endif %}
+    <a href="{{ path('app_articles')}}">Pages Articles</a>
+{% endblock %}
