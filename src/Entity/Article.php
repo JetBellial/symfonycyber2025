@@ -16,7 +16,7 @@ class Article
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 50)]
+    #[ORM\Column(length: 100)]
     private ?string $title = null;
 
     #[ORM\Column(type: Types::TEXT)]
@@ -28,6 +28,14 @@ class Article
     #[ORM\ManyToOne]
     private ?User $user = null;
 
+
+
+    /**
+     * @var Collection<int, Commentary>
+     */
+    #[ORM\OneToMany(targetEntity: Commentary::class, mappedBy: 'article')]
+    private Collection $commentaries;
+
     /**
      * @var Collection<int, Category>
      */
@@ -36,6 +44,7 @@ class Article
 
     public function __construct()
     {
+        $this->commentaries = new ArrayCollection();
         $this->categories = new ArrayCollection();
     }
 
@@ -88,6 +97,37 @@ class Article
     public function setUser(?User $user): static
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+
+    /**
+     * @return Collection<int, Commentary>
+     */
+    public function getCommentaries(): Collection
+    {
+        return $this->commentaries;
+    }
+
+    public function addCommentary(Commentary $commentary): static
+    {
+        if (!$this->commentaries->contains($commentary)) {
+            $this->commentaries->add($commentary);
+            $commentary->setArticle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommentary(Commentary $commentary): static
+    {
+        if ($this->commentaries->removeElement($commentary)) {
+            // set the owning side to null (unless already changed)
+            if ($commentary->getArticle() === $this) {
+                $commentary->setArticle(null);
+            }
+        }
 
         return $this;
     }

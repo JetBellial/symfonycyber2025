@@ -11,7 +11,7 @@ use App\Repository\CategoryRepository;
 class CategoryController extends AbstractController
 {
     public function __construct(
-        private readonly CategoryRepository $repo
+        //private readonly CategoryRepository $repo
     ) {}
 
     #[Route('/category', name: 'app_category_showAll')]
@@ -19,7 +19,7 @@ class CategoryController extends AbstractController
     {
     
         return $this->render('category/categories.html.twig', [
-            'categories' => $this->repo->findAll()
+            //'categories' => $this->repo->findAll()
         ]);
     }
     
@@ -28,7 +28,7 @@ class CategoryController extends AbstractController
     {
     
         return $this->render('category/category.html.twig', [
-            'category' => $this->repo->find($id)
+            //'category' => $this->repo->find($id)
         ]);
     }
 }
