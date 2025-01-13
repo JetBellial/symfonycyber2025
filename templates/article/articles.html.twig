@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Articles{% endblock %}
+
+{% block body %}
+    <h2>Liste des articles :</h2>
+    {# boucle pour afficher les articles #}
+    {% for article in articles %}
+    <div>
+        <p>{{ article.title }}</p>
+        <div>
+            {{ article.content }}
+        </div>
+        <h3>{{ article.createAt |date("d-m-Y") }}</h3>
+        {# Condition pour tester si l'utilisateur existe #}
+        {% if article.user.id is defined %}
+            <h3>{{ article.user.firstname }} - {{ article.user.lastname}}</h3>
+        {% endif %}
+          {# boucle pour afficher les categories #}
+          {% for category in article.categories %}
+            <h4> {{ category.libele }}</h4> 
+          {% endfor %}
+          {# afficher les catégories directement 
+          <h4>{{ article.categories[0].libele }} - {{ article.categories[1].libele }} - {{ article.categories[2].libele }}</h4>
+          #}
+    </div>
+    {% endfor %}
+{% endblock %}

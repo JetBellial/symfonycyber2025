@@ -25,4 +25,7 @@ return [
     '@hotwired/turbo' => [
         'version' => '8.0.12',
     ],
+    'preline' => [
+        'version' => '2.7.0',
+    ],
 ];
