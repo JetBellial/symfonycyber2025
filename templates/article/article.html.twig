@@ -1,56 +1,79 @@
-{% extends 'base.html.twig' %} 
-
-{% block title %}Article{% endblock %} 
+{% extends 'base.html.twig' %} {% block title %}Article{% endblock %} 
 
 {% block body %}
+<!-- Blog Article -->
+<div class="max-w-3xl px-4 pt-6 lg:pt-10 pb-12 sm:px-6 lg:px-8 mx-auto">
+	<div class="max-w-2xl">
+		<!-- Content -->
+		<div class="space-y-5 md:space-y-8">
+			<div class="space-y-3">
+				<h2 class="text-2xl font-bold md:text-3xl dark:text-white">
+					{{ article.title }}
+				</h2>
 
-<div
-	class="bg-white border rounded-xl shadow-sm sm:flex dark:bg-neutral-900 dark:border-neutral-700 dark:shadow-neutral-700/70"
->
-	<div
-		class="shrink-0 relative w-full rounded-t-xl overflow-hidden pt-[40%] sm:rounded-s-xl sm:max-w-60 md:rounded-se-none md:max-w-xs"
-	>
-		<img
-			class="size-full absolute top-0 start-0 object-cover"
-			src="https://images.unsplash.com/photo-1680868543815-b8666dba60f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=560&q=80"
-			alt="Card Image"
-		/>
-	</div>
-	<div class="flex flex-wrap">
-		<div class="p-4 flex flex-col h-full sm:p-7">
-			<h3 class="text-lg font-bold text-gray-800 dark:text-white">
-				{{ article.title }}
-			</h3>
-			<p class="mt-1 text-gray-500 dark:text-neutral-400">
-				{{ article.content }}
-			</p>
-			<h4 class="text-base text-gray-800 dark:text-white">
-				{{ article.createAt | date('d/m/Y') }}
-			</h4>
-			<h4 class="text-base text-gray-800 dark:text-white">
+				<p class="text-lg text-gray-800 dark:text-neutral-200">
+					{{ article.content }}
+				</p>
+			</div>
+			<!-- Author et date -->
+			<div class="grow">
+				<div class="flex justify-between items-center gap-x-2">
+					<div>
+						<!-- Tooltip -->
+						<div class="hs-tooltip [--trigger:hover] [--placement:bottom] inline-block">
+							<div class="hs-tooltip-toggle sm:mb-1 block text-start cursor-pointer">
+								<span class="font-semibold text-gray-800 dark:text-neutral-200">
+								{{ article.user.lastname }} - {{ article.user.firstname }}
+								</span>
+							</div>
+							<ul class="text-xs text-gray-500 dark:text-neutral-500">
+								<li class="inline-block relative pe-6 last:pe-0 last-of-type:before:hidden before:absolute before:top-1/2 before:end-2 before:-translate-y-1/2 before:size-1 before:bg-gray-300 before:rounded-full dark:text-neutral-400 dark:before:bg-neutral-600">
+								{{ article.createAt | date('d m Y')}}
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End Author et date -->
+			<!-- Categories -->
+			<div>
 				{% for category in article.categories %}
-				{{ category.libele }}
+				<a
+					class="m-1 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 dark:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
+					href="#"
+				>
+					{{ category.libele }}
+				</a>
 				{% endfor %}
-			</h4>
-			<h4 class="text-base text-gray-800 dark:text-white">
-				{{ article.user.lastname }}, {{ article.user.firstname }}
-			</h4>
-			<a href="{{ path('app_articles') }}">Pages Articles</a>
-			<h3 class="text-lg font-bold text-gray-800 dark:text-white">
-				Liste des commentaires
-			</h3>
-			{% for commentary in article.commentaries %}
-			<p class="text-base text-gray-800 dark:text-white">
-				{{ commentary.content }}
-			</p>
-			<h4 class="text-lg text-gray-800 dark:text-white">
-				{{ commentary.user.lastname }}, {{  commentary.user.firstname }}
-			</h4>
-			<h4 class="text-lg text-gray-800 dark:text-white">
-				{{ commentary.createAt | date('d/m/Y') }}
-			</h4>
-			{% endfor %}
+			</div>
+			<!-- End Categories -->
 		</div>
+		<!-- End Content -->
+		
+		<!-- Commentary -->
+		<ul class="space-y-10">
+			{% for commentary in article.commentaries %}
+			<li>
+				<p class="mt-1 text-sm text-gray-500 dark:text-neutral-500">
+					{{ commentary.content }}
+				</p>
+				
+				<h5
+					class="font-medium text-sm text-gray-800 dark:text-neutral-200"
+				>
+					{{ commentary.user.lastname }} -
+					{{ commentary.user.firstname }}
+				</h5>
+				<p class="mb-2 text-sm text-gray-500 dark:text-neutral-500">
+					{{ commentary.createAt | date("m/d/Y") }}
+				</p>
+			</li>
+			{% endfor %}
+		</ul>
+		<!-- End Commentary -->
+		
 	</div>
 </div>
+<!-- End Blog Article -->
 {% endblock %}
