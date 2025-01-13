@@ -14,16 +14,16 @@ class CategoryController extends AbstractController
         private readonly CategoryRepository $repo
     ) {}
 
-    #[Route('/category', name: 'app_category')]
-    public function index(): Response
+    #[Route('/category', name: 'app_category_showAll')]
+    public function showAll(): Response
     {
     
-        return $this->render('category/index.html.twig', [
+        return $this->render('category/categories.html.twig', [
             'categories' => $this->repo->findAll()
         ]);
     }
     
-    #[Route('/categorie/{id}', name: 'app_category')]
+    #[Route('/category/{id}', name: 'app_category_show')]
     public function show(int $id): Response
     {
     

@@ -4,6 +4,13 @@
 
 {% block body %}
     <h1>la catégorie</h1>
-    <p>{{ category.id }}</p>
-    <p>{{ category.libele }}</p>
+    {% if category.id is defined %}
+        <p>{{ category.id }}</p>
+        <p>{{ category.libele }}</p>
+    {% else %}
+        <p>
+            La catégorie n'existe pas
+        </p>
+    {% endif %}
+    
 {% endblock %}
