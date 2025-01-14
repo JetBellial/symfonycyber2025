@@ -39,26 +39,29 @@ class CategoryController extends AbstractController
     #[Route('/category/add', name: 'app_category_add')]
     public function addCategory(Request $request): Response
     {
-        $message = "";
-        $category = new Category();
 
+        $category = new Category();
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
+
+        //Test si le formulaire est submit
         if ($form->isSubmitted()) {
             //test si la catégorie existe
             if (!$this->repo->findOneBy(['libele' => $category->getLibele()])) {
                 $this->em->persist($category);
                 $this->em->flush();
                 $message = "La catégorie à été ajouté en BDD";
+                $status = "success";
             } else {
                 $message = "La catégorie existe déja";
+                $status = "danger";
             }
+            $this->addFlash($status, $message);
         }
         return $this->render(
-            'category/categoryadd.html.twig',
+            'category/categoryAdd.html.twig',
             [
-                'formulaire' => $form->createView(),
-                'msg' => $message
+                'formulaire' => $form->createView()
             ]
         );
     }

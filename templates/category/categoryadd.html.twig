@@ -7,6 +7,6 @@
         {{ form_start(formulaire) }}
         {{ form_rest(formulaire) }}
         {{ form_end(formulaire) }}
-        <p>{{ msg }}</p>
-    </turbo-frame>
+        {% include "composants/_toast.html.twig" %}
+  </turbo-frame>
 {% endblock %}
