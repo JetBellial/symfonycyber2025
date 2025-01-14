@@ -3,7 +3,8 @@
 {% block title %}Article{% endblock %} 
 
 {% block body %}
-<!-- Blog Article -->
+{% if article.id is defined %}
+	<!-- Blog Article -->
 <div class="max-w-3xl px-4 pt-6 lg:pt-10 pb-12 sm:px-6 lg:px-8 mx-auto">
 	<div class="max-w-2xl">
 		<!-- article -->
@@ -76,4 +77,6 @@
 	</div>
 </div>
 <!-- End Blog Article -->
+{% endif %}
+
 {% endblock %}

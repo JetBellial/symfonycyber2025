@@ -28,4 +28,17 @@ return [
     'preline' => [
         'version' => '2.7.0',
     ],
+    'flowbite' => [
+        'version' => '2.5.2',
+    ],
+    '@popperjs/core' => [
+        'version' => '2.11.8',
+    ],
+    'flowbite-datepicker' => [
+        'version' => '1.3.0',
+    ],
+    'flowbite/dist/flowbite.min.css' => [
+        'version' => '2.5.2',
+        'type' => 'css',
+    ],
 ];
