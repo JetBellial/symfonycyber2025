@@ -4,6 +4,7 @@ module.exports = {
 		"./assets/vendor/preline/*.js",
 		"./assets/**/*.js",
 		"./templates/**/*.html.twig",
+		"./src/Form/**/*.php",
 	],
 	theme: {
 		extend: {},

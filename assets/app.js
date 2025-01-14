@@ -8,7 +8,5 @@ import './bootstrap.js';
 import './styles/app.css';
 import './styles/app.tailwind.css';
 import './vendor/preline/preline.index.js';
-import './vendor/flowbite/flowbite.index.js';
 
-//import './styles/modif.css';
 console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
