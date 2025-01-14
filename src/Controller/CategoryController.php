@@ -27,7 +27,7 @@ class CategoryController extends AbstractController
         ]);
     }
 
-   /*  #[Route('/category/{id}', name: 'app_category_show')]
+    #[Route('/category/{id}', name: 'app_category_show', requirements: ['id' => '\d+'])]
     public function show(int $id): Response
     {
 
@@ -35,7 +35,7 @@ class CategoryController extends AbstractController
             'category' => $this->repo->find($id)
         ]);
     }
- */
+ 
     #[Route('/category/add', name: 'app_category_add')]
     public function addCategory(Request $request): Response
     {
