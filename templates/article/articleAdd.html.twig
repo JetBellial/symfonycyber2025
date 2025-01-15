@@ -3,7 +3,10 @@
 {% block title %}Ajouter un Article{% endblock %}
 
 {% block body %}
-	<turbo-frame id="id-article">
+	<turbo-frame id="article_id">
+		{{ form_start(form) }}
+		{{ form_rest(form) }}
+		{{ form_end(form) }}
 		{% include "composants/_toast.html.twig" %}
-	</turbo-fr>
+	</turbo-frame> 
 {% endblock %}

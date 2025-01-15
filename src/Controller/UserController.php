@@ -10,6 +10,8 @@ use App\Form\UserType;
 use App\Entity\User;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
 
 class UserController extends AbstractController
 {
